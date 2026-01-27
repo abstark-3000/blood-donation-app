@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Available Nearby</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h2>🩸 Blood Group Required: {{ blood_group }}</h2>
+
+  <!-- ================= HOSPITAL SECTION ================= -->
+  <h3 style="margin-top:20px;">🏥 Nearby Hospitals</h3>
+
+  {% if hospitals %}
+    <div style="text-align:left;">
+      {% for h in hospitals %}
+        <div style="
+          background:#fff5f5;
+          padding:15px;
+          border-radius:8px;
+          margin-bottom:15px;
+          border-left:5px solid #c62828;
+        ">
+          <strong style="font-size:18px; color:#c62828;">
+            {{ h.name }}
+          </strong><br>
+
+          📍 {{ h.city }}<br>
+          📏 {{ h.distance }} km away<br>
+          📞 {{ h.phone }}<br><br>
+
+          {% if h.latitude and h.longitude %}
+            <a href="https://www.google.com/maps?q={{ h.latitude }},{{ h.longitude }}"
+               target="_blank">
+              <button type="button">
+                📍 Open in Google Maps
+              </button>
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:#555;">No hospitals found nearby.</p>
+  {% endif %}
+
+  <hr>
+
+  <!-- ================= DONOR SECTION ================= -->
+  <h3>👤 Nearby Donors</h3>
+
+  {% if donors %}
+    <div style="text-align:left;">
+      {% for d in donors %}
+        <div style="
+          background:#f9f9f9;
+          padding:12px;
+          border-radius:8px;
+          margin-bottom:12px;
+          border-left:5px solid #999;
+        ">
+          <strong>{{ d.username }}</strong><br>
+          📏 {{ d.distance }} km away<br>
+          📞 {{ d.phone }}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:#555;">
+      No donors found for this blood group nearby.
+    </p>
+  {% endif %}
+</div>
+
+</body>
+</html>

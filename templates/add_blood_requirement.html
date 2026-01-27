@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Blood Requirement</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h2>🩸 Update Blood Requirement</h2>
+
+  <form method="POST" style="text-align:left;">
+
+    <!-- Blood Group -->
+    <label style="font-weight:bold; color:#c62828;">
+      Blood Group
+    </label>
+    <select name="blood_group" required
+            style="
+              width:100%;
+              padding:12px;
+              margin:8px 0 15px 0;
+              border-radius:6px;
+              border:1px solid #ccc;
+              font-size:14px;
+              background:#fff;
+              cursor:pointer;
+            ">
+      <option value="">-- Select Blood Group --</option>
+      <option>O+</option><option>O-</option>
+      <option>A+</option><option>A-</option>
+      <option>B+</option><option>B-</option>
+      <option>AB+</option><option>AB-</option>
+    </select>
+
+    <!-- Urgency -->
+    <label style="font-weight:bold; color:#c62828;">
+      Urgency Level
+    </label>
+    <select name="urgency" required
+            style="
+              width:100%;
+              padding:12px;
+              margin:8px 0 15px 0;
+              border-radius:6px;
+              border:1px solid #ccc;
+              font-size:14px;
+              background:#fff;
+              cursor:pointer;
+            ">
+      <option value="Normal">🟢 Normal</option>
+      <option value="Urgent">🚨 Urgent</option>
+    </select>
+
+    <!-- Units -->
+    <label style="font-weight:bold; color:#c62828;">
+      Units Required
+    </label>
+    <input type="number"
+           name="units"
+           min="1"
+           placeholder="Enter number of units"
+           style="
+             width:100%;
+             padding:12px;
+             margin:8px 0 20px 0;
+             border-radius:6px;
+             border:1px solid #ccc;
+             font-size:14px;
+           ">
+
+    <button type="submit">Save Requirement</button>
+  </form>
+
+  <br>
+
+  <a href="{{ url_for('hospital_dashboard') }}">
+    ← Back to Dashboard
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>{{ user.username }}'s Profile</h1>
+
+        <div class="info">
+            <p><strong>Name:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Blood Group:</strong> {{ user.blood_group }}</p>
+            <p><strong>Contact:</strong> {{ user.phone }}</p>
+           
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+  background: #ffe5e5;
+  font-family: Arial, sans-serif;
+}
+
+.profile-container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #c62828;
+}
+
+.info p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.btn {
+  width: 95%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  background: #c62828;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #b71c1c;
+}
+
+a {
+  color: #c62828;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

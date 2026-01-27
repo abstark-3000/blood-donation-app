@@ -1,0 +1,108 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #b30000, #e60000);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffe6e6; /* same as home.css hover */
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Titles & text */
+.container h2 {
+  color: #b30000;
+  margin-bottom: 10px;
+}
+
+.container p {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Donor list grid */
+.donor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Donor card */
+.donor-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 280px;
+  max-width: 300px;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.donor-card:hover {
+  transform: translateY(-8px); /* same hover lift effect as home.css */
+}
+
+.donor-card h3 {
+  color: #b30000;
+  margin-bottom: 10px;
+}
+
+.donor-card p {
+  font-size: 15px;
+  margin: 8px 0;
+  color: #333;
+}
+
+/* Call Button */
+button {
+  width: 90%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  background: #b30000;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #800000;
+}

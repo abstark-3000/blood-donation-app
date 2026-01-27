@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h2>🏥 Hospital Dashboard</h2>
+
+  <!-- Hospital Info -->
+  <div style="
+    background:#fff5f5;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-align:left;
+  ">
+    <p><strong>Name:</strong> {{ hospital.name }}</p>
+    <p><strong>City:</strong> {{ hospital.city }}</p>
+    <p><strong>Status:</strong> <span style="color:green;">Verified ✅</span></p>
+  </div>
+
+  <hr>
+
+  <h3>🩸 Blood Requirements</h3>
+
+  {% if requirements %}
+    <ul style="list-style:none; padding:0;">
+      {% for r in requirements %}
+        <li style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          margin-bottom:12px;
+          padding:10px;
+          background:#fff5f5;
+          border-radius:8px;
+          border-left:5px solid #c62828;
+        ">
+
+          <!-- Requirement Info -->
+          <div>
+            <strong>{{ r.blood_group }}</strong> —
+            {% if r.urgency == "Urgent" %}
+              <span style="color:red;font-weight:bold;">🚨 Urgent</span>
+            {% else %}
+              Normal
+            {% endif %}
+            <br>
+            <small>{{ r.units_required }} unit(s) required</small>
+          </div>
+
+          <!-- Remove Button -->
+          <form method="POST"
+                action="{{ url_for('remove_blood_requirement', req_id=r.id) }}">
+            <button type="submit"
+                    style="
+                      background:#c62828;
+                      color:white;
+                      border:none;
+                      border-radius:4px;
+                      padding:6px 12px;
+                      font-size:12px;
+                      cursor:pointer;
+                    ">
+              ❌ Remove
+            </button>
+          </form>
+
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="color:#555;">No blood requirements added yet.</p>
+  {% endif %}
+
+  <hr>
+
+  <!-- Actions -->
+  <a href="{{ url_for('add_blood_requirement') }}">
+    <button>Add / Update Blood Requirement</button>
+  </a>
+
+  <br><br>
+
+  <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+</body>
+</html>

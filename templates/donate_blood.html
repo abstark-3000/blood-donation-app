@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate Blood</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h2>Nearby Hospitals for Blood Donation</h2>
+
+  <!-- Location Form -->
+  <form method="POST" id="locForm">
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+    <button type="submit" id="findBtn" disabled>
+      Find Nearby Hospitals
+    </button>
+    <p id="status">Detecting your location...</p>
+  </form>
+
+  <!-- RESULTS -->
+  {% if hospitals %}
+    <div style="margin-top: 25px; text-align: left;">
+      {% for h in hospitals %}
+        <div style="
+          background:#fff5f5;
+          padding:15px;
+          border-radius:8px;
+          margin-bottom:15px;
+          border-left:5px solid #c62828;
+        ">
+
+          <strong style="font-size:18px; color:#c62828;">
+            🏥 {{ h.name }}
+          </strong><br>
+
+          📍 {{ h.city }}<br>
+          📏 {{ h.distance }} km away<br>
+          📞 {{ h.phone }}<br><br>
+
+          <!-- GOOGLE MAP LINK -->
+          {% if h.latitude and h.longitude %}
+            <a href="https://www.google.com/maps?q={{ h.latitude }},{{ h.longitude }}"
+               target="_blank">
+              <button type="button" style="margin-bottom:10px;">
+                📍 Open in Google Maps
+              </button>
+            </a>
+          {% endif %}
+
+          {% if h.requirements and h.requirements|length > 0 %}
+            <strong>🩸 Blood Required:</strong>
+            <ul style="margin-top:8px;">
+              {% for r in h.requirements %}
+                <li>
+                  {{ r.blood_group }}
+                  —
+                  {% if r.urgency == "Urgent" %}
+                    <span style="color:red; font-weight:bold;">
+                      🚨 Urgent
+                    </span>
+                  {% else %}
+                    Normal
+                  {% endif %}
+                  ({{ r.units_required }} units)
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <span style="color:green; font-weight:bold;">
+              ✅ No urgent blood shortage
+            </span>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  const status = document.getElementById("status");
+  const btn = document.getElementById("findBtn");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        document.getElementById("latitude").value = pos.coords.latitude;
+        document.getElementById("longitude").value = pos.coords.longitude;
+        status.innerText = "📍 Location detected";
+        btn.disabled = false;
+      },
+      function() {
+        status.innerText = "❌ Location access required";
+      }
+    );
+  } else {
+    status.innerText = "Geolocation not supported";
+  }
+</script>
+
+</body>
+</html>

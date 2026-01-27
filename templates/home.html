@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Donation Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>❤️ Blood Donation Portal</h1>
+    </div>
+    <nav>
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Give Blood, Save Lives</h2>
+      <p>
+        Every two seconds, someone needs blood.  
+        A single donation can be the difference between life and death.
+      </p>
+
+      <div class="actions">
+        <a href="{{ url_for('donate_blood') }}" class="btn donate">Donate Blood</a>
+        <a href="{{ url_for('ask_blood') }}" class="active btn donate">Request Blood</a>
+      </div>
+
+      <p style="margin-top:15px; font-size:14px;">
+        ✔ No login required to find blood or hospitals  
+        <br>
+        ✔ Verified hospitals • Trusted donors • Real-time needs
+      </p>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="info">
+    <div class="card">
+      <h3>Why Blood Donation Matters</h3>
+      <p>
+        Blood cannot be manufactured. It can only come from generous donors.
+        Accident victims, cancer patients, mothers during childbirth, and
+        people with chronic illnesses depend on timely blood donations.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Who Can Donate Blood?</h3>
+      <p>
+        Anyone aged 18–65, weighing over 50kg, and in good health can donate blood.
+        The process is safe, quick, and supervised by medical professionals.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How Your Donation Helps</h3>
+      <p>
+        One unit of blood can save up to three lives.
+        Your small act of kindness can give someone a second chance at life.
+      </p>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="info">
+    <div class="card">
+      <h3>Benefits of Donating Blood</h3>
+      <p>
+        • Free basic health check-up  
+        <br>
+        • Improves heart health  
+        <br>
+        • Helps maintain healthy iron levels  
+        <br>
+        • Gives a sense of purpose and social responsibility
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Safe & Trusted Platform</h3>
+      <p>
+        We connect donors directly with verified hospitals and people in need.
+        Hospitals can update urgent blood requirements in real time, ensuring
+        your donation reaches where it is needed the most.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Your One Step Can Save Lives</h3>
+      <p>
+        Whether you donate blood or help someone find it,
+        you are becoming part of a life-saving network.
+        Together, we can ensure that no one suffers due to lack of blood.
+      </p>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Be a Hero Today</h2>
+      <p>
+        You don’t need a cape to save lives.  
+        Just a kind heart and a few minutes of your time.
+      </p>
+
+      <div class="actions">
+        <a href="{{ url_for('donate_blood') }}" class="btn donate">Find Nearby Hospitals</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Blood Donation Portal | Made with ❤️ to save lives</p>
+  </footer>
+
+</body>
+</html>

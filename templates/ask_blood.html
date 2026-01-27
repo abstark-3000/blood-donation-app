@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Blood</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ask_blood.css') }}">
+</head>
+<body>
+  <h2>Request Blood</h2>
+  <form method="POST" id="bloodForm">
+    <label for="blood_group">Blood Group:</label>
+    <select name="blood_group" id="blood_group" required>
+      <option value="">--Select--</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+
+    <!-- Hidden location fields -->
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+
+    <button type="submit" id="submitBtn" disabled>Request Blood</button>
+    <p id="locStatus">Detecting your location...</p>
+  </form>
+
+  <script>
+    const submitBtn = document.getElementById("submitBtn");
+    const locStatus = document.getElementById("locStatus");
+
+    window.onload = function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+            locStatus.textContent = "Location detected!";
+            submitBtn.disabled = false;
+          },
+          function(error) {
+            locStatus.textContent = "Location denied! You must allow location to request blood.";
+          },
+          { enableHighAccuracy: true }
+        );
+      } else {
+        locStatus.textContent = "Geolocation not supported by your browser.";
+      }
+    }
+  </script>
+</body>
+</html>

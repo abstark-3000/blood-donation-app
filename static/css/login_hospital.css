@@ -1,0 +1,68 @@
+body {
+  background: #ffe5e5;
+  font-family: Arial, sans-serif;
+}
+
+/* Main login card */
+.container {
+  width: 350px;
+  margin: 80px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Heading */
+h2 {
+  margin-bottom: 20px;
+  color: #c62828;
+}
+
+/* Input fields */
+input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Login button */
+button {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #c62828;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Hover effect */
+button:hover {
+  background: #b71c1c;
+}
+
+/* Text below form */
+p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Links */
+a {
+  color: #c62828;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Link hover */
+a:hover {
+  text-decoration: underline;
+}

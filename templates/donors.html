@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Available Donors</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donors.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <h1>❤️ Blood Donation Portal</h1>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('profile') }}">Profile</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Available Donors Near You</h2>
+    <p>Showing donors sorted by nearest distance.</p>
+
+    <div class="donor-list">
+      {% if donors %}
+        {% for donor in donors %}
+          <div class="donor-card">
+            <h3>{{ donor.username }}</h3>
+            <p><strong>Blood Group:</strong> {{ donor.blood_group }}</p>
+            
+            <p><strong>Phone:</strong> {{ donor.phone }}</p>
+            <p><strong>Distance:</strong> {{ donor.distance }} km away</p>
+            <button onclick="window.location.href='tel:{{ donor.phone }}'">Call Now</button>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>{{ message if message else "No donors found nearby." }}</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

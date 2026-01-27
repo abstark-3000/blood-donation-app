@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Blood Donation Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Login As</h2>
+
+    <a href="{{ url_for('login_donor') }}">
+      <button type="button">👤 Donor Login</button>
+    </a>
+
+    <a href="{{ url_for('login_hospital') }}">
+      <button type="button">🏥 Hospital Login</button>
+    </a>
+
+    <p>Don't have an account?
+      <a href="{{ url_for('signup') }}">Sign up here</a>
+    </p>
+  </div>
+</body>
+</html>

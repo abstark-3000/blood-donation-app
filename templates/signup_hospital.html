@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Sign Up - Blood Donation Portal</title>
+  <!-- KEEP SAME CSS STYLE -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup_donor.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Hospital Registration</h2>
+
+    <form method="POST" id="signupForm">
+      <input type="text" name="name" placeholder="Hospital Name" required>
+
+      <input type="email" name="email" placeholder="Official Email" required>
+
+      <input type="password" name="password" placeholder="Password" required>
+
+      <input type="tel"
+             name="phone"
+             placeholder="Contact Number"
+             pattern="[0-9]{10}"
+             maxlength="10"
+             required>
+
+      <input type="text" name="city" placeholder="City" required>
+
+      <!-- Hidden location fields -->
+      <input type="hidden" name="latitude" id="latitude">
+      <input type="hidden" name="longitude" id="longitude">
+
+      <button type="submit" id="submitBtn" disabled>
+        Register Hospital
+      </button>
+
+      <p id="locStatus">Detecting hospital location...</p>
+    </form>
+
+    <p>
+      Already registered?
+      <a href="{{ url_for('login') }}">Login here</a>
+    </p>
+  </div>
+
+  <script>
+    const submitBtn = document.getElementById("submitBtn");
+    const locStatus = document.getElementById("locStatus");
+
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            document.getElementById("latitude").value =
+              position.coords.latitude;
+            document.getElementById("longitude").value =
+              position.coords.longitude;
+
+            locStatus.textContent = "📍 Hospital location detected!";
+            submitBtn.disabled = false;
+          },
+          function () {
+            locStatus.textContent =
+              "❌ Location denied! You must allow location to register.";
+          },
+          { enableHighAccuracy: true }
+        );
+      } else {
+        locStatus.textContent =
+          "❌ Geolocation not supported by your browser.";
+      }
+    };
+  </script>
+</body>
+</html>

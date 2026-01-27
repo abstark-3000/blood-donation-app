@@ -1,0 +1,123 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #b30000, #e60000);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .logo h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #ffe6e6;
+}
+
+/* Hero Section */
+.hero {
+  height: 70vh;
+  background: linear-gradient(to right, #fff5f5, #ffe6e6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-text h2 {
+  font-size: 2.8rem;
+  color: #b30000;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 14px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn.donate {
+  background: #b30000;
+  color: white;
+}
+
+.btn.donate:hover {
+  background: #800000;
+}
+
+.btn.request {
+  background: white;
+  border: 2px solid #b30000;
+  color: #b30000;
+}
+
+.btn.request:hover {
+  background: #b30000;
+  color: white;
+}
+
+/* Info Section */
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 50px auto;
+  max-width: 1100px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 280px;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  color: #b30000;
+  margin-bot

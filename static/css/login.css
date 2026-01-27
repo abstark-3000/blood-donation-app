@@ -1,0 +1,71 @@
+/* ===== Common Body ===== */
+body {
+  background: #ffe5e5;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Main Container ===== */
+.container {
+  width: 350px;
+  margin: 80px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* ===== Headings ===== */
+h2 {
+  margin-bottom: 20px;
+  color: #c62828;
+}
+
+/* ===== Inputs (Login Forms) ===== */
+input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ===== Buttons ===== */
+button {
+  width: 95%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 5px;
+  background: #c62828;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b71c1c;
+}
+
+/* ===== Links & Text ===== */
+p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+a {
+  color: #c62828;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== LOGIN SELECTION PAGE ===== */
+.container a {
+  display: block;
+}

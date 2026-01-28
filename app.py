@@ -13,17 +13,29 @@ app.secret_key = "supersecretkey"
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # db = SQLAlchemy(app)
 
+# import os
+
+# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+#     "DATABASE_URL",
+#     "sqlite:///" + os.path.join(BASE_DIR, "blood_app.db")
+# )
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# db = SQLAlchemy(app)
 import os
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
-    "DATABASE_URL",
-    "sqlite:///" + os.path.join(BASE_DIR, "blood_app.db")
-)
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+
 
 
 
